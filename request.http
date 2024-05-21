@@ -1,0 +1,82 @@
+### VARIABLES
+@API_URL = http://localhost:8080/api
+
+### inserir CURSO
+
+POST {{API_URL}}/curso
+Content-Type: application/json
+
+{
+  "descricao": "Curso de pedal",
+  "cargaHoraria": "40 horas",
+  "objetivo": "Aprender técnicas avançadas de pedal",
+  "ementa": "Tópicos sobre pedal",
+  "professoresId": [],
+  "agendasId": []
+}
+
+### inserir PROFESSOR
+
+POST {{API_URL}}/professor HTTP/1.1
+Content-Type: application/json
+
+{
+  "nome": "João Silva",
+  "cpf": "123.456.789-10",
+  "endereco": "Rua das Flores, 123",
+  "telefone": "9999-8888",
+  "cursosId": [1]
+}
+
+### inserir AGENDA
+
+POST {{API_URL}}/agenda
+Content-Type: application/json
+
+{
+  "dataInicial": "2024-06-01",
+  "dataFinal": "2024-06-30",
+  "horarioInicial": "08:00:00",
+  "horarioFinal": "17:00:00",
+  "professorId": 1,
+  "cidade": "São Paulo",
+  "estado": "SP",
+  "cep": "01234-567",
+  "cursoId": 1,
+  "resumo": ""
+}
+
+### obter todos PROFESSOR
+
+GET {{API_URL}}/professor
+Content-Type: application/json
+
+
+### obter todos CURSOS
+
+GET {{API_URL}}/curso
+Content-Type: application/json
+
+### curso do professor-id CURSOS
+
+GET {{API_URL}}/curso/1
+Content-Type: application/json
+
+### obter todos AGENDA
+
+GET {{API_URL}}/agenda
+Content-Type: application/json
+
+### obter professor por data AGENDA
+
+GET {{API_URL}}/agenda/1/2024-06-01
+Content-Type: application/json
+
+### inserir resumo na AGENDA
+
+PUT {{API_URL}}/agenda/1
+Content-Type: application/json
+
+{
+  "resumo": "Novo resumo"
+}
